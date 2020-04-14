@@ -1,10 +1,9 @@
 package com.jlmcdeveloper.kotlinexemplo.ui.login
 
+import androidx.lifecycle.ViewModel
 import com.jlmcdeveloper.kotlinexemplo.data.Repository
-import com.jlmcdeveloper.kotlinexemplo.ui.base.BaseViewModel
 
 
-class LoginViewModel(repository: Repository) : BaseViewModel<LoginNavigator>(repository) {
-
+class LoginViewModel(repository: Repository) : ViewModel() {
 
 }

@@ -1,9 +1,8 @@
 package com.jlmcdeveloper.kotlinexemplo.ui.main
 
+import androidx.lifecycle.ViewModel
 import com.jlmcdeveloper.kotlinexemplo.data.Repository
-import com.jlmcdeveloper.kotlinexemplo.ui.base.BaseViewModel
 
-class MainViewModel(repository: Repository) : BaseViewModel<MainNavigator>(repository){
-
+class MainViewModel(repository: Repository) : ViewModel(){
 
 }

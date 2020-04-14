@@ -30,10 +30,6 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    dataBinding {
-        enabled = true
-    }
-
     kapt {
         generateStubs = true
     }
@@ -54,14 +50,11 @@ dependencies {
     // Lifecycles only (without ViewModel or LiveData)
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version"
 
-
-    // dagger2
-    implementation "com.google.dagger:dagger:2.25.4"
-    implementation "com.google.dagger:dagger-android-support:2.25.4"
-    kapt "com.google.dagger:dagger-android-processor:2.25.4"
-    kapt "com.google.dagger:dagger-compiler:2.25.4"
-    compileOnly 'javax.annotation:jsr250-api:1.0'
-    implementation 'javax.inject:javax.inject:1'
+    // koin version
+    implementation "org.koin:koin-android:2.1.5"
+    implementation "org.koin:koin-android-viewmodel:2.1.5"
+    // Koin for Unit tests
+    testImplementation "org.koin:koin-test:2.1.5"
 
     // rxJava
     implementation 'io.reactivex.rxjava2:rxandroid:2.1.1'

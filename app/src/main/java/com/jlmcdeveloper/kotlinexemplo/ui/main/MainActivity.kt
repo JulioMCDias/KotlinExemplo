@@ -1,36 +1,18 @@
 package com.jlmcdeveloper.kotlinexemplo.ui.main
 
 import android.os.Bundle
-import androidx.lifecycle.ViewModelProvider
-import com.jlmcdeveloper.kotlinexemplo.BR
+import androidx.appcompat.app.AppCompatActivity
 import com.jlmcdeveloper.kotlinexemplo.R
-import com.jlmcdeveloper.kotlinexemplo.ViewModelProvideFactory
-import com.jlmcdeveloper.kotlinexemplo.databinding.ActivityMainBinding
-import com.jlmcdeveloper.kotlinexemplo.ui.base.BaseActivity
-import java.lang.ref.WeakReference
-import javax.inject.Inject
+import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 
-class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(), MainNavigator {
 
-    @Inject lateinit var factory: ViewModelProvideFactory
-    override val bindingVariable = BR.viewModel
-    override val layoutId = R.layout.activity_main
+class MainActivity : AppCompatActivity() {
+    private val mainViewModel: MainViewModel by inject()
 
-    private lateinit var mainViewModel: MainViewModel
-    private var activityMainBinding: ActivityMainBinding? = null
-
-    //----------
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        activityMainBinding = viewDataBinding
-        mainViewModel.navigator = WeakReference(this)
+        setContentView(R.layout.activity_main)
+        vwText.text = "ola"
     }
-
-    override fun getViewModel(): MainViewModel {
-        mainViewModel = ViewModelProvider(this, factory).get(MainViewModel::class.java)
-        return mainViewModel
-    }
-
-
-
 }

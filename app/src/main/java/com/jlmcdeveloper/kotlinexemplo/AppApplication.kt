@@ -1,27 +1,25 @@
 package com.jlmcdeveloper.kotlinexemplo
 
 import android.app.Application
-import com.jlmcdeveloper.kotlinexemplo.di.component.DaggerAppComponent
-import dagger.android.AndroidInjector
-import dagger.android.DispatchingAndroidInjector
-import dagger.android.HasAndroidInjector
-import javax.inject.Inject
+import com.jlmcdeveloper.kotlinexemplo.di.activityModules
+import com.jlmcdeveloper.kotlinexemplo.di.appModules
+import org.koin.android.ext.koin.androidContext
+import org.koin.android.ext.koin.androidLogger
+import org.koin.core.context.startKoin
 
-class AppApplication : Application() , HasAndroidInjector{
-
-    @Inject lateinit var dispatchingAndroidInjector : DispatchingAndroidInjector<Any>
+class AppApplication : Application(){
 
     override fun onCreate() {
         super.onCreate()
-
-        DaggerAppComponent.builder()
-            .application(this)
-            .build()
-            .inject(this)
-    }
-
-
-    override fun androidInjector(): AndroidInjector<Any> {
-        return dispatchingAndroidInjector
+        // get all modules
+        val moduleList = appModules + activityModules
+        // set the module list
+        startKoin{
+            androidLogger()
+            // declare used Android context
+            androidContext(this@AppApplication)
+            // declare modules
+            modules(moduleList)
+        }
     }
 }
