@@ -5,7 +5,11 @@
     <string name="password">Senha</string>
     <string name="btn_logar">logar</string>
     <string name="create_new_login">Não possui uma conta?</string>
+    <string name="delete">apagar</string>
     <string name="cadastrar">Cadastrar</string>
     <string name="email">Email</string>
     <string name="confirmar_password">Confirmar senha</string>
+    <string name="save">Salvar</string>
+    <string name="title">Titulo</string>
+    <string name="description">Descrição</string>
 </resources>
